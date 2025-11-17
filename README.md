@@ -109,7 +109,7 @@ client.create_session(payload, signature_override="precomputed-signature")
 Creates a new payment session.
 
 **Parameters:**
-- `amount`: int - Amount in smallest currency unit (e.g., cents)
+- `amount`: int - Amount
 - `currency`: str - Currency code (e.g., "USD")
 - `customer`: dict - Customer info with email, name, and optional phone
 - `description`: str (optional) - Payment description

@@ -74,7 +74,7 @@ class PaymentGatewayClient:
         """Create a payment session.
 
         Args:
-            amount: Amount in smallest currency unit (e.g., cents)
+            amount: Amount
             currency: Currency code (e.g., "USD")
             customer: Customer information dict with email, name, and optional phone
             description: Optional payment description

@@ -86,3 +86,7 @@ ignore = []
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "dist", "build"]
+skips = ["B101"]  # Skip assert_used in tests

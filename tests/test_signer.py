@@ -1,6 +1,5 @@
 """Tests for the signer module."""
 
-
 from acoriss_payment_gateway.signer import HmacSha256Signer, SignerInterface
 
 

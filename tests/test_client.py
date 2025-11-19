@@ -1,6 +1,5 @@
 """Tests for the client module."""
 
-
 import pytest
 import requests
 from pytest_mock import MockerFixture
@@ -347,9 +346,7 @@ class TestUtilityMethods:
                 "firstName": "John",
                 "lastName": "Doe",
             },
-            "services": [
-                {"serviceName": "Service 1", "servicePrice": 1000}
-            ],
+            "services": [{"serviceName": "Service 1", "servicePrice": 1000}],
         }
 
         converted = client._convert_keys_to_snake_case(data)

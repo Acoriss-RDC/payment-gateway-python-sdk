@@ -36,6 +36,5 @@ class APIError(Exception):
     def __repr__(self) -> str:
         """Return detailed representation of the error."""
         return (
-            f"APIError(message={self.message!r}, status={self.status!r}, "
-            f"data={self.data!r}, headers={self.headers!r})"
+            f"APIError(message={self.message!r}, status={self.status!r}, data={self.data!r}, headers={self.headers!r})"
         )

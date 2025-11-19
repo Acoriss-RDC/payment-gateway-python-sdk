@@ -1,6 +1,5 @@
 """Tests for the errors module."""
 
-
 from acoriss_payment_gateway.errors import APIError
 
 

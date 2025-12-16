@@ -49,6 +49,7 @@ class PaymentSessionRequest(TypedDict, total=False):
     cancel_url: Optional[str]
     success_url: Optional[str]
     transaction_id: Optional[str]  # merchant reference
+    service_id: Optional[str] # categorization of the payment
     services: Optional[List[ServiceItem]]
 
 
@@ -62,6 +63,7 @@ class PaymentSessionResponse(TypedDict):
     checkout_url: str
     customer: CustomerInfo
     created_at: str  # ISO date string
+    service_id: Optional[str] # categorization of the payment
 
 
 class PaymentService(TypedDict):
@@ -75,6 +77,7 @@ class PaymentService(TypedDict):
     currency: Optional[str]  # ISO 4217 or null
     session_id: str
     created_at: str  # ISO date string
+    service_id: Optional[str] # categorization of the payment
 
 
 class RetrievePaymentCustomer(TypedDict):
@@ -97,6 +100,7 @@ class RetrievePaymentResponse(TypedDict):
     expired: bool
     services: List[PaymentService]
     status: PaymentStatus  # 'P' = Pending, 'S' = Succeeded, 'C' = Canceled
+    service_id: Optional[str] # categorization of the payment
 
 
 class ClientConfig(TypedDict, total=False):

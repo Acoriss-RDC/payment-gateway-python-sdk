@@ -68,6 +68,7 @@ class PaymentGatewayClient:
         success_url: Optional[str] = None,
         transaction_id: Optional[str] = None,
         services: Optional[list] = None,
+        service_id: Optional[str] = None,
         signature_override: Optional[str] = None,
         **extra: Any,
     ) -> PaymentSessionResponse:
@@ -83,6 +84,7 @@ class PaymentGatewayClient:
             success_url: Optional success redirect URL
             transaction_id: Optional merchant reference ID
             services: Optional list of service items
+            service_id: Optional categorization of the payment
             signature_override: Optional pre-computed signature
             **extra: Additional fields for forward compatibility
 
@@ -97,6 +99,7 @@ class PaymentGatewayClient:
             "amount": amount,
             "currency": currency,
             "customer": customer,
+            "serviceId": service_id,
         }
 
         if description is not None:
@@ -111,6 +114,8 @@ class PaymentGatewayClient:
             payload["transactionId"] = transaction_id
         if services is not None:
             payload["services"] = services
+        if service_id is not None:
+            payload["serviceId"] = service_id
 
         # Add any extra fields
         payload.update(extra)

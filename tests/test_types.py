@@ -124,3 +124,85 @@ def test_retrieve_payment_response_typed_dict() -> None:
     assert response["id"] == "pay_123"
     assert response["status"] == "P"
     assert response["expired"] is False
+
+
+def test_service_id_in_payment_session_request() -> None:
+    """Test service_id field in PaymentSessionRequest TypedDict."""
+    request: PaymentSessionRequest = {
+        "amount": 5000,
+        "currency": "USD",
+        "customer": {
+            "email": "test@example.com",
+            "name": "Test User",
+        },
+        "description": "Test payment",
+        "transaction_id": "tx_123",
+        "service_id": "srv_category_123",
+    }
+    assert request["service_id"] == "srv_category_123"
+    
+    # Test without service_id (optional field)
+    request_without_service_id: PaymentSessionRequest = {
+        "amount": 3000,
+        "currency": "USD", 
+        "customer": {
+            "email": "test2@example.com",
+            "name": "Test User 2",
+        },
+    }
+    assert request_without_service_id.get("service_id") is None
+
+
+def test_service_id_in_payment_session_response() -> None:
+    """Test service_id field in PaymentSessionResponse TypedDict."""
+    response: PaymentSessionResponse = {
+        "id": "sess_123",
+        "amount": 5000,
+        "currency": "USD",
+        "description": "Test",
+        "checkout_url": "https://example.com/checkout",
+        "customer": {
+            "email": "test@example.com",
+            "name": "Test User",
+        },
+        "created_at": "2025-11-15T12:00:00Z",
+        "service_id": "srv_category_456",
+    }
+    assert response["service_id"] == "srv_category_456"
+
+
+def test_service_id_in_payment_service() -> None:
+    """Test service_id field in PaymentService TypedDict."""
+    service: PaymentService = {
+        "id": "srv_123",
+        "name": "Test Service",
+        "description": "A test service",
+        "quantity": 1,
+        "price": 1000,
+        "currency": "USD",
+        "session_id": "sess_123",
+        "created_at": "2025-11-15T12:00:00Z",
+        "service_id": "srv_category_789",
+    }
+    assert service["service_id"] == "srv_category_789"
+
+
+def test_service_id_in_retrieve_payment_response() -> None:
+    """Test service_id field in RetrievePaymentResponse TypedDict."""
+    response: RetrievePaymentResponse = {
+        "id": "pay_123",
+        "amount": 5000,
+        "currency": "USD",
+        "description": "Test payment",
+        "transaction_id": "tx_123",
+        "customer": {
+            "email": "test@example.com",
+            "phone": "+1234567890",
+        },
+        "created_at": "2025-11-15T12:00:00Z",
+        "expired": False,
+        "services": [],
+        "status": "P",
+        "service_id": "srv_category_999",
+    }
+    assert response["service_id"] == "srv_category_999"

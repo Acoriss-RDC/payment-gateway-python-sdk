@@ -34,6 +34,7 @@ session = client.create_session(
     cancel_url="https://example.com/cancel",
     success_url="https://example.com/success",
     transaction_id="order_1234",
+    service_id="ecommerce_payment",  # optional: categorize the payment
     services=[
         {
             "name": "express_delivery",
@@ -117,6 +118,7 @@ Creates a new payment session.
 - `cancel_url`: str (optional) - Cancel redirect URL
 - `success_url`: str (optional) - Success redirect URL
 - `transaction_id`: str (optional) - Merchant reference ID
+- `service_id`: str (optional) - Service categorization identifier
 - `services`: list (optional) - List of service items
 - `signature_override`: str (optional) - Custom signature
 

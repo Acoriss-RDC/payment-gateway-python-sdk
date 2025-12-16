@@ -14,7 +14,7 @@ from acoriss_payment_gateway.types import (
     ServiceItem,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.1.3"
 
 __all__ = [
     "PaymentGatewayClient",
